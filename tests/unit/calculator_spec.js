@@ -62,7 +62,6 @@ describe('calculator', function () {
     calculator.operatorClick('=')
     sum = calculator.runningTotal
     calculator.clearClick()
-    // assert.equal(sum, 7)
     assert.equal(calculator.runningTotal, 0)
     assert.equal(sum, 7)
   })
