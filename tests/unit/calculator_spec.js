@@ -44,12 +44,6 @@ describe('calculator', function () {
   })
 
   it('should chain multiple operations together', function() {
-    
-    // calculator.runningTotal = 4
-    // calculator.operatorClick('+')
-    // calculator.operatorClick('=')
-    // assert.equal(calculator.runningTotal, 8)
-
     calculator.numberClick(4)
     calculator.operatorClick('+')
     calculator.numberClick(15)
@@ -59,14 +53,19 @@ describe('calculator', function () {
     assert.equal(calculator.runningTotal, 7)
   })
 
+  it('should clear the running total without affecting the calculation', function() {
+    calculator.numberClick(4)
+    calculator.operatorClick('+')
+    calculator.numberClick(15)
+    calculator.operatorClick('-')
+    calculator.numberClick(12)
+    calculator.operatorClick('=')
+    sum = calculator.runningTotal
+    calculator.clearClick()
+    // assert.equal(sum, 7)
+    assert.equal(calculator.runningTotal, 0)
+    assert.equal(sum, 7)
+  })
+
 });
 
-// calculator.operatorClick() - chain multiple operations together
-// calculator.clearClick() - clear the running total without affecting the calculation
-
-// it('should be able to calculate the total number of visitors per day', function () {
-//   park1.addDinosaurToCollection(dinosaur1)
-//   park1.addDinosaurToCollection(dinosaur2)
-//   park1.addDinosaurToCollection(dinosaur3)
-//   assert.strictEqual(park1.totalVisitorsPerDay(), 500)
-// });
